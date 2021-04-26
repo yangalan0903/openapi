@@ -13,5 +13,5 @@
 package models
 
 type ApiSignature struct {
-	CallbackType string `json:"callbackType" yaml:"callbackType" bson:"callbackType"`
+	Uri string `json:"uri" yaml:"uri" bson:"uri"`
 }
