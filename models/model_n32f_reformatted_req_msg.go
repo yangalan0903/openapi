@@ -1,7 +1,7 @@
 /*
  * JOSE Protected Message Forwarding API
  *
- * N32-f Message Forwarding Service. © 2021, 3GPP Organizational Partners (ARIB, ATIS, CCSA, ETSI, TSDSI, TTA, TTC). All rights reserved. 
+ * N32-f Message Forwarding Service. © 2021, 3GPP Organizational Partners (ARIB, ATIS, CCSA, ETSI, TSDSI, TTA, TTC). All rights reserved.
  *
  * Source file: 3GPP TS 29.573 V16.6.0; 5G System; Public Land Mobile Network (PLMN) Interconnection; Stage 3
  * Url: http://www.3gpp.org/ftp/Specs/archive/29_series/29.573/
@@ -13,6 +13,6 @@
 package models
 
 type N32fReformattedReqMsg struct {
-	ReformattedData *FlatJweJson `json:"reformattedData" yaml:"reformattedData" bson:"reformattedData"`
+	ReformattedData    *FlatJweJson  `json:"reformattedData" yaml:"reformattedData" bson:"reformattedData"`
 	ModificationsBlock []FlatJwsJson `json:"modificationsBlock,omitempty" yaml:"modificationsBlock" bson:"modificationsBlock"`
 }

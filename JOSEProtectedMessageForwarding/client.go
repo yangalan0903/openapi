@@ -1,7 +1,7 @@
 /*
  * JOSE Protected Message Forwarding API
  *
- * N32-f Message Forwarding Service. © 2021, 3GPP Organizational Partners (ARIB, ATIS, CCSA, ETSI, TSDSI, TTA, TTC). All rights reserved. 
+ * N32-f Message Forwarding Service. © 2021, 3GPP Organizational Partners (ARIB, ATIS, CCSA, ETSI, TSDSI, TTA, TTC). All rights reserved.
  *
  * Source file: 3GPP TS 29.573 V16.6.0; 5G System; Public Land Mobile Network (PLMN) Interconnection; Stage 3
  * Url: http://www.3gpp.org/ftp/Specs/archive/29_series/29.573/
@@ -13,39 +13,42 @@
 package JOSEProtectedMessageForwarding
 
 import (
-    "crypto/tls"
-    "golang.org/x/net/http2"
-    "net/http"
+	"crypto/tls"
+	"net/http"
+
+	"golang.org/x/net/http2"
 )
 
 // APIClient manages communication with the JOSE Protected Message Forwarding API API v1.1.2
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
-    cfg    *Configuration
-    common service // Reuse a single struct instead of allocating one for each service on the heap.
+	cfg    *Configuration
+	common service // Reuse a single struct instead of allocating one for each service on the heap.
 
-    // API Services
+	// API Services
+	N32FForwardApi *N32FForwardApiService
 }
 
 type service struct {
-    client *APIClient
+	client *APIClient
 }
 
 // NewAPIClient creates a new API client. Requires a userAgent string describing your application.
 // optionally a custom http.Client to allow for advanced features such as caching.
 func NewAPIClient(cfg *Configuration) *APIClient {
-    if cfg.httpClient == nil {
-        cfg.httpClient = http.DefaultClient
-        cfg.httpClient.Transport = &http2.Transport{
-            TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
-        }
-    }
+	if cfg.httpClient == nil {
+		cfg.httpClient = http.DefaultClient
+		cfg.httpClient.Transport = &http2.Transport{
+			TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+		}
+	}
 
-    c := &APIClient{}
-    c.cfg = cfg
-    c.common.client = c
+	c := &APIClient{}
+	c.cfg = cfg
+	c.common.client = c
 
-    // API Services
+	// API Services
+	c.N32FForwardApi = (*N32FForwardApiService)(&c.common)
 
-    return c
+	return c
 }

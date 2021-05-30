@@ -16,3 +16,5 @@ require (
 	golang.org/x/oauth2 v0.0.0-20210413134643-5e61552d6c78
 	gopkg.in/h2non/gock.v1 v1.0.16
 )
+
+replace github.com/yangalan0903/http => /home/alan/files/thesis/http

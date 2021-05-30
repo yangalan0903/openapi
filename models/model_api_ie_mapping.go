@@ -13,7 +13,7 @@
 package models
 
 type ApiIeMapping struct {
-	ApiSignature *ApiSignature `json:"apiSignature" yaml:"apiSignature" bson:"apiSignature"`
+	ApiSignature ApiSignature `json:"apiSignature" yaml:"apiSignature" bson:"apiSignature"`
 	ApiMethod HttpMethod `json:"apiMethod" yaml:"apiMethod" bson:"apiMethod"`
 	IeList []IeInfo `json:"IeList" yaml:"IeList" bson:"IeList"`
 }

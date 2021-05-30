@@ -10,6 +10,8 @@
 package Nnrf_NFDiscovery
 
 import (
+	"fmt"
+
 	"github.com/yangalan0903/openapi"
 	"github.com/yangalan0903/openapi/models"
 
@@ -107,7 +109,7 @@ type SearchNFInstancesParamOpts struct {
 	IfNoneMatch             optional.String
 }
 
-func (a *NFInstancesStoreApiService) SearchNFInstances(ctx context.Context, targetNfType models.NfType, requesterNfType models.NfType, localVarOptionals *SearchNFInstancesParamOpts) (models.SearchResult, *http.Response, error) {
+func (a *NFInstancesStoreApiService) SearchNFInstances(ctx context.Context, targetNfType models.NfType, requesterNfType models.NfType, localVarOptionals *SearchNFInstancesParamOpts, sbiTargetApiroot string) (models.SearchResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -225,6 +227,9 @@ func (a *NFInstancesStoreApiService) SearchNFInstances(ctx context.Context, targ
 
 	localVarHTTPContentTypes := []string{"application/json"}
 
+	if sbiTargetApiroot != "" {
+		localVarHeaderParams["3gpp-Sbi-Target-apiRoot"] = sbiTargetApiroot
+	}
 	localVarHeaderParams["Content-Type"] = localVarHTTPContentTypes[0] // use the first content type specified in 'consumes'
 
 	// to determine the Accept header
@@ -244,6 +249,8 @@ func (a *NFInstancesStoreApiService) SearchNFInstances(ctx context.Context, targ
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
+
+	fmt.Println(r)
 
 	localVarHTTPResponse, err := openapi.CallAPI(a.client.cfg, r)
 	if err != nil || localVarHTTPResponse == nil {

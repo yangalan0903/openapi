@@ -245,7 +245,7 @@ DefaultApiService
 @return models.UeAuthenticationCtx
 */
 
-func (a *DefaultApiService) UeAuthenticationsPost(ctx context.Context, authenticationInfo models.AuthenticationInfo) (models.UeAuthenticationCtx, *http.Response, error) {
+func (a *DefaultApiService) UeAuthenticationsPost(ctx context.Context, authenticationInfo models.AuthenticationInfo, sbiTargetApiroot string) (models.UeAuthenticationCtx, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
@@ -275,6 +275,9 @@ func (a *DefaultApiService) UeAuthenticationsPost(ctx context.Context, authentic
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 
+	if sbiTargetApiroot != "" {
+		localVarHeaderParams["3gpp-Sbi-Target-apiRoot"] = sbiTargetApiroot
+	}
 	// body params
 	localVarPostBody = &authenticationInfo
 
