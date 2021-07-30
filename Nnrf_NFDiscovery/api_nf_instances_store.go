@@ -10,8 +10,6 @@
 package Nnrf_NFDiscovery
 
 import (
-	"fmt"
-
 	"github.com/yangalan0903/openapi"
 	"github.com/yangalan0903/openapi/models"
 
@@ -249,8 +247,6 @@ func (a *NFInstancesStoreApiService) SearchNFInstances(ctx context.Context, targ
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
-
-	fmt.Println(r)
 
 	localVarHTTPResponse, err := openapi.CallAPI(a.client.cfg, r)
 	if err != nil || localVarHTTPResponse == nil {
