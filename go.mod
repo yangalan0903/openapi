@@ -12,9 +12,7 @@ require (
 	github.com/mitchellh/mapstructure v1.4.1
 	github.com/sirupsen/logrus v1.8.1
 	github.com/stretchr/testify v1.6.1
-	golang.org/x/net v0.0.0-20210410081132-afb366fc7cd1
-	golang.org/x/oauth2 v0.0.0-20210413134643-5e61552d6c78
-	gopkg.in/h2non/gock.v1 v1.0.16
+	golang.org/x/net v0.0.0-20210726213435-c6fcb2dbf985
+	golang.org/x/oauth2 v0.0.0-20210628180205-a41e5a781914
+	gopkg.in/h2non/gock.v1 v1.1.1
 )
-
-replace github.com/yangalan0903/http => /home/alan/files/thesis/http
